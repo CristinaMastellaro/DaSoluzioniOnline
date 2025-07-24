@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Form, Button } from "react-bootstrap";
+import Error from "./Error";
 
 const basicTotalComment = {
         comment: "",
@@ -11,6 +12,7 @@ class AddComment extends Component {
     
     state = {
         totalComment: basicTotalComment,
+        isError: false
     }
 
     letsReview = (e) => {
@@ -32,7 +34,9 @@ class AddComment extends Component {
             throw new Error("Non siamo riusciti a salvare la recensione, ci dispiace")
         }
       })
-      .catch(err => {console.log("Errore!", err)})
+      .catch(err => {
+        this.setState({isError: true})
+        console.log("Errore!", err)})
     }
 
     render() {
@@ -59,6 +63,7 @@ class AddComment extends Component {
                 <Button variant="warning" type="submit">
                     Recensisci!
                 </Button>
+                {this.state.isError && <Error message="Non siamo riusciti a caricare il tuo commento" />}
             </Form>
         )
     }

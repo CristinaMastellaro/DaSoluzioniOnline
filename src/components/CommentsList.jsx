@@ -71,7 +71,7 @@ class CommentsList extends Component {
         return(
             <ListGroup>
                 {this.state.isLoading && !this.state.isError && <Loading/>}
-                {this.state.isError && <Error />}
+                {this.state.isError && <Error message="Non siamo riusciti a caricare i commenti"/>}
                 {this.state.totalComments.map(comment => 
                     { 
                         // console.log("comment", comment)

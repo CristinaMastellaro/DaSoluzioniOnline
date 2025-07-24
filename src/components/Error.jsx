@@ -1,8 +1,8 @@
 import { Alert } from "react-bootstrap"
 
-const Error = () => {
+const Error = (props) => {
     return (
-        <Alert variant="danger">Non siamo riusciti a caricare i commenti</Alert>
+        <Alert variant="danger">{props.message}</Alert>
     )
 }
 
