@@ -27,6 +27,7 @@ class AddComment extends Component {
       .then(res => {
         if (res.ok) {
             alert("Commento salvato, grazie per la recensione!")
+            this.setState({totalComment: basicTotalComment,})
         } else {
             throw new Error("Non siamo riusciti a salvare la recensione, ci dispiace")
         }

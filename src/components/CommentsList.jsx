@@ -1,6 +1,8 @@
 import { Component } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
-import { Button, Spinner, Alert } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import Error from "./Error";
+import Loading from "./Loading";
 
 class CommentsList extends Component {
     
@@ -68,14 +70,14 @@ class CommentsList extends Component {
         // console.log("endpoint", this.props.endpoint)
         return(
             <ListGroup>
-                {this.state.isLoading && !this.state.isError && <Spinner variant="danger"/>}
-                {this.state.isError && <Alert variant="danger">Non siamo riusciti a caricare i commenti</Alert>}
+                {this.state.isLoading && !this.state.isError && <Loading/>}
+                {this.state.isError && <Error />}
                 {this.state.totalComments.map(comment => 
                     { 
                         // console.log("comment", comment)
                         return(                        
                         <div key={comment._id} className="d-flex justify-content-between mb-1 align-items-center">
-                            <ListGroup.Item>{comment.comment}</ListGroup.Item>
+                            <ListGroup.Item>{comment.comment} - {comment.rate}</ListGroup.Item>
                             <Button variant="danger" className="ms-1" onClick={() => {
                                 this.deleteReview(this.props.endpoint + "/" + comment._id)
                             }}><i className="bi bi-trash3-fill"></i></Button>
