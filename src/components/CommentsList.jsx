@@ -1,11 +1,12 @@
 import { Component } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
-import { Button, Spinner } from "react-bootstrap";
+import { Button, Spinner, Alert } from "react-bootstrap";
 
 class CommentsList extends Component {
     
     state = {
         isLoading: true,
+        isError: false,
         totalComments: [],
     }
 
@@ -29,7 +30,7 @@ class CommentsList extends Component {
             console.log("commentsRetrieved", commentsRetrieved)
         })
         .catch((err) => {
-            this.setState({isLoading: false}),
+            this.setState({isLoading: false, isError: true}),
             console.log("Errore!", err)
         });
     };
@@ -58,7 +59,7 @@ class CommentsList extends Component {
             }
         })
         .catch(err => {
-            this.setState({isLoading: false})
+            this.setState({isLoading: false, isError: true})
             console.log("Errore!", err)
         })
     }
@@ -67,7 +68,8 @@ class CommentsList extends Component {
         // console.log("endpoint", this.props.endpoint)
         return(
             <ListGroup>
-                {this.state.isLoading && <Spinner variant="danger"/>}
+                {this.state.isLoading && !this.state.isError && <Spinner variant="danger"/>}
+                {this.state.isError && <Alert variant="danger">Non siamo riusciti a caricare i commenti</Alert>}
                 {this.state.totalComments.map(comment => 
                     { 
                         // console.log("comment", comment)
