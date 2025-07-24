@@ -36,7 +36,7 @@ class CommentArea extends Component {
   render() {
     return (
       <div>
-      <CommentsList commentsArray={this.state.comments}/>
+      <CommentsList commentsArray={this.state.comments} endpoint={this.endpoint}/>
       <AddComment id={this.props.id} endpoint={this.endpoint}/>
       </div>
     );
