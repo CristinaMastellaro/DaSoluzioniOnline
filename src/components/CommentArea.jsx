@@ -43,7 +43,7 @@ class CommentArea extends Component {
   render() {
     // console.log("Sto rifacendo il render")
     return (
-      <div>
+      <div className="position-fixed end-0 me-5 w-25">
       {/* <CommentsList commentsArray={this.state.comments} endpoint={this.endpoint} id={this.props.id}/> */}
       <CommentsList endpoint={this.endpoint} id={this.props.id} modifyState={this.updateComments} changed={this.state.changed} />
       <AddComment id={this.props.id} endpoint={this.endpoint} update={this.updateComments}/>
