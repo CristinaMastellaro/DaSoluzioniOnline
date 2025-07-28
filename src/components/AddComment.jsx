@@ -23,13 +23,14 @@ class AddComment extends Component {
             body: JSON.stringify(this.state.totalComment),
             headers: {
                 Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODcwYzQ2NDc4Y2RkZjAwMTU1ZDY3YTMiLCJpYXQiOjE3NTIyMjA3NzIsImV4cCI6MTc1MzQzMDM3Mn0.aps4Stj2AnXuaQyOjapUZvfSF2nL9WrlYcWeD7tpoDE",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODg3NmM1MDEyODg5NzAwMTVmMjdiYWYiLCJpYXQiOjE3NTM3MDU1NTIsImV4cCI6MTc1NDkxNTE1Mn0.1TQwVzn7FvzI-p6nQpG9O5BYg4m_236yDkgmmjo-3QA",
                 "Content-type": "application/json"
       }})
       .then(res => {
         if (res.ok) {
             alert("Commento salvato, grazie per la recensione!")
-            this.setState({totalComment: basicTotalComment,})
+            this.setState({totalComment: basicTotalComment})
+            this.props.update({changed: true})
         } else {
             throw new Error("Non siamo riusciti a salvare la recensione, ci dispiace")
         }

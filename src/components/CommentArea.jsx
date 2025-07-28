@@ -5,7 +5,13 @@ import AddComment from "./AddComment";
 class CommentArea extends Component {
   state = {
     comments: [],
+    changed: false
   };
+
+  updateComments = (newComment) => {
+    this.setState(newComment)
+    // this.setState({changed: false})
+  }
 
   endpoint = "https://striveschool-api.herokuapp.com/api/comments/";
 
@@ -34,11 +40,12 @@ class CommentArea extends Component {
 //   }
 
   render() {
+    // console.log("Sto rifacendo il render")
     return (
       <div>
       {/* <CommentsList commentsArray={this.state.comments} endpoint={this.endpoint} id={this.props.id}/> */}
-      <CommentsList endpoint={this.endpoint} id={this.props.id}/>
-      <AddComment id={this.props.id} endpoint={this.endpoint}/>
+      <CommentsList endpoint={this.endpoint} id={this.props.id} modifyState={this.props.modifyState}/>
+      <AddComment id={this.props.id} endpoint={this.endpoint} update={this.updateComments}/>
       </div>
     );
   }

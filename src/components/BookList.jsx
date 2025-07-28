@@ -1,10 +1,17 @@
-import { Component } from 'react'
-import SingleBook from './SingleBook'
-import { Col, Form, Row } from 'react-bootstrap'
+import { Component } from "react";
+import SingleBook from "./SingleBook";
+import { Col, Form, Row } from "react-bootstrap";
+import CommentArea from "./CommentArea";
 
 class BookList extends Component {
   state = {
-    searchQuery: '',
+    searchQuery: "",
+    asin: "",
+    selected: false
+  };
+
+  modifyState = (newState) => {
+    this.setState(newState)
   }
 
   render() {
@@ -23,19 +30,26 @@ class BookList extends Component {
           </Col>
         </Row>
         <Row className="g-2 mt-3">
-          {this.props.books
-            .filter((b) =>
-              b.title.toLowerCase().includes(this.state.searchQuery)
-            )
-            .map((b) => (
-              <Col xs={12} md={4} key={b.asin}>
-                <SingleBook book={b} />
-              </Col>
-            ))}
+          <Col xs={8}>
+            <Row>
+              {this.props.books
+                .filter((b) =>
+                  b.title.toLowerCase().includes(this.state.searchQuery)
+                )
+                .map((b) => (
+                  <Col xs={12} md={4} key={b.asin}>
+                    <SingleBook book={b}  modifyState={this.modifyState} asin={this.state.asin} />
+                  </Col>
+                ))}
+            </Row>
+          </Col>
+          <Col xs={4}>
+          {this.state.selected && (<CommentArea id={this.state.asin} modifyState={this.modifyState}/>)}
+          </Col>
         </Row>
       </>
-    )
+    );
   }
 }
 
-export default BookList
+export default BookList;
