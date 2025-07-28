@@ -42,6 +42,7 @@ class CommentsList extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.id !== this.props.id || prevProps.changed !== this.props.changed) {
       this.retrieveComments();
+      this.props.modifyState({changed: false})
     }
   }
 
@@ -72,6 +73,7 @@ class CommentsList extends Component {
 
   render() {
     // console.log("endpoint", this.props.endpoint)
+    console.log("this.props.changed inside Cl", this.props.changed)
     return (
       <ListGroup>
         {this.state.isLoading && !this.state.isError && <Loading />}

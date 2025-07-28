@@ -11,6 +11,7 @@ class CommentArea extends Component {
   updateComments = (newComment) => {
     this.setState(newComment)
     // this.setState({changed: false})
+    console.log("this.state.changed", this.state.changed)
   }
 
   endpoint = "https://striveschool-api.herokuapp.com/api/comments/";
@@ -44,7 +45,7 @@ class CommentArea extends Component {
     return (
       <div>
       {/* <CommentsList commentsArray={this.state.comments} endpoint={this.endpoint} id={this.props.id}/> */}
-      <CommentsList endpoint={this.endpoint} id={this.props.id} modifyState={this.props.modifyState}/>
+      <CommentsList endpoint={this.endpoint} id={this.props.id} modifyState={this.updateComments} changed={this.state.changed} />
       <AddComment id={this.props.id} endpoint={this.endpoint} update={this.updateComments}/>
       </div>
     );
