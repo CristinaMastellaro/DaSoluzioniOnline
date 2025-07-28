@@ -32,12 +32,13 @@ class BookList extends Component {
         <Row className="g-2 mt-3">
           <Col xs={8}>
             <Row>
+              <h1>{this.props.title}</h1>
               {this.props.books
                 .filter((b) =>
                   b.title.toLowerCase().includes(this.state.searchQuery)
                 )
                 .map((b) => (
-                  <Col xs={12} md={4} key={b.asin}>
+                  <Col xs={12} lg={4} key={b.asin}>
                     <SingleBook book={b}  modifyState={this.modifyState} asin={this.state.asin} />
                   </Col>
                 ))}

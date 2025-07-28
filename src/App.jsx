@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import { Component } from 'react'
 import MyNav from './components/MyNav'
 import MyFooter from './components/MyFooter'
 import Welcome from './components/Welcome'
@@ -7,20 +8,40 @@ import Welcome from './components/Welcome'
 import { Container } from 'react-bootstrap'
 import BookList from './components/BookList'
 
-import fantasy from './data/fantasy.json'
+// import Fantasy from './data/fantasy.json'
+// import Scifi from './data/scifi.json'
+// import Romance from './data/romance.json'
+// import History from './data/history.json'
+// import Horror from './data/horror.json'
 
-function App() {
+class App extends Component {
+
+  state = {
+    genre: [],
+    nameGenre: ""
+  }
+
+  updateGenre = (newGenre) => {
+    this.setState(newGenre)
+  }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.genre !== this.state.genre) 
+  // }
+
+render() {
   return (
     <>
       <MyNav />
       <Container>
-        <Welcome />
+        <Welcome changeGenre={this.updateGenre}/>
         {/* <AllTheBooks /> */}
-        <BookList books={fantasy} />
+        <BookList books={this.state.genre} title={this.state.nameGenre} />
       </Container>
       <MyFooter />
     </>
   )
+  }
 }
 
 export default App
