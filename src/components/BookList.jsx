@@ -37,7 +37,7 @@ const BookList = (props) => {
       </Row>
       <Row className=" mt-3">
         <h1>{props.title}</h1>
-        <Col xs={8} className="overflow-auto" style={{ height: "60vh" }}>
+        <Col xs={8} className="overflow-auto" style={{ height: "800px" }}>
           <Row>
             {props.books
               .filter((b) => b.title.toLowerCase().includes(searchQuery))
