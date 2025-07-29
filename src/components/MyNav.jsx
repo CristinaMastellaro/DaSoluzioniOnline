@@ -1,9 +1,9 @@
-import { Navbar, Nav, Container } from 'react-bootstrap'
+import { Navbar, Nav, Container } from "react-bootstrap";
 
 const MyNav = () => (
   <Navbar
     expand="lg"
-    className="bg-body-tertiary mb-3"
+    className="bg-body-tertiary mb-3 w-100"
     bg="dark"
     data-bs-theme="dark"
   >
@@ -19,6 +19,6 @@ const MyNav = () => (
       </Navbar.Collapse>
     </Container>
   </Navbar>
-)
+);
 
-export default MyNav
+export default MyNav;

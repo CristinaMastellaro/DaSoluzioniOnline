@@ -1,12 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
-import { Component } from 'react'
-import MyNav from './components/MyNav'
-import MyFooter from './components/MyFooter'
-import Welcome from './components/Welcome'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { useState } from "react";
+import MyNav from "./components/MyNav";
+import MyFooter from "./components/MyFooter";
+import Welcome from "./components/Welcome";
 // import AllTheBooks from './components/AllTheBooks'
-import { Container } from 'react-bootstrap'
-import BookList from './components/BookList'
+import { Container } from "react-bootstrap";
+import BookList from "./components/BookList";
 
 // import Fantasy from './data/fantasy.json'
 // import Scifi from './data/scifi.json'
@@ -14,38 +14,38 @@ import BookList from './components/BookList'
 // import History from './data/history.json'
 // import Horror from './data/horror.json'
 
-class App extends Component {
-
-  state = {
-    genre: [],
-    nameGenre: ""
-  }
-
-  updateGenre = (newGenre) => {
-    this.setState(newGenre)
-  }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.genre !== this.state.genre) 
+const App = () => {
+  const [genre, setGenre] = useState([]);
+  const [nameGenre, setNameGenre] = useState("");
+  // state = {
+  //   genre: [],
+  //   nameGenre: ""
   // }
 
-render() {
+  const updateGenre = (newGenre, newNameGenre) => {
+    setGenre(newGenre);
+    setNameGenre(newNameGenre);
+    // this.setState(newGenre)
+  };
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.genre !== this.state.genre)
+  // }
+
   return (
     <>
       <MyNav />
       <Container>
-        <Welcome changeGenre={this.updateGenre}/>
+        <Welcome changeGenre={updateGenre} />
         {/* <AllTheBooks /> */}
-        <BookList books={this.state.genre} title={this.state.nameGenre} />
+        <BookList books={genre} title={nameGenre} />
       </Container>
       <MyFooter />
     </>
-  )
-  }
-}
+  );
+};
 
-export default App
-
+export default App;
 
 // fetch("https://striveschool-api.herokuapp.com/api/put-your-endpoint-here/", {
 // headers: {
