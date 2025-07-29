@@ -10,7 +10,7 @@ const Welcome = (props) => (
     <Alert className="text-center" variant="warning">
       <h1>Benvenuti in EpiBooks!</h1>
     </Alert>
-    <Dropdown className="mt-3">
+    <Dropdown className="mt-3 text-center">
       <Dropdown.Toggle variant="warning" id="dropdown-basic">
         Genere
       </Dropdown.Toggle>

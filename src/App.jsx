@@ -35,7 +35,7 @@ const App = () => {
   return (
     <>
       <MyNav />
-      <Container>
+      <Container className="flex-fill">
         <Welcome changeGenre={updateGenre} />
         {/* <AllTheBooks /> */}
         <BookList books={genre} title={nameGenre} />
