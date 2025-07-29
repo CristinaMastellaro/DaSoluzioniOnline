@@ -58,7 +58,7 @@ const AddComment = (props) => {
           <Form.Label>Commento</Form.Label>
           <Form.Control
             as="textarea"
-            rows={5}
+            rows={3}
             className="p-3"
             placeholder="Facci sapere cosa pensi di questo libro!"
             value={totalComment.comment}

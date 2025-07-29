@@ -94,7 +94,7 @@ const CommentsList = (props) => {
   return (
     <>
       <h4>Recensioni</h4>
-      <ListGroup className="overflow-auto" style={{ maxHeight: "400px" }}>
+      <ListGroup className="overflow-auto" style={{ maxHeight: "350px" }}>
         {isLoading && !isError && <Loading />}
         {isError && (
           <Error message="Non siamo riusciti a caricare i commenti" />
