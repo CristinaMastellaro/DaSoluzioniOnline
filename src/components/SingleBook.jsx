@@ -3,17 +3,8 @@ import { Card } from "react-bootstrap";
 // import CommentArea from './CommentArea'
 
 const SingleBook = (props) => {
-  // state = {
-  //   selected: false,
-  //   asin: this.props.book.asin,
-  // };
-
   const [selected, setSelected] = useState(false);
   const [asin, setAsin] = useState(props.book.asin);
-
-  // componentDidUpdate() {
-  //   console.log("Sono dentro componentDidUpdate");
-  // }
 
   const putClassSelected = () => {
     if (props.book.asin !== props.asin) {
@@ -30,11 +21,12 @@ const SingleBook = (props) => {
       style={{
         border: asin === props.asin && !selected ? "3px solid red" : "none",
       }}
+      data-testid={"book" + asin}
     >
-      {/* <Card.Img variant="top" src={this.props.book.img} onClick={() => this.setState({ selected: !this.state.selected })} /> */}
       <Card.Img
         variant="top"
         src={props.book.img}
+        data-testid={asin}
         onClick={() => {
           props.modifyState(props.book.asin, props.sq, true);
           putClassSelected();

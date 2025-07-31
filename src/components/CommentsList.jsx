@@ -105,6 +105,7 @@ const CommentsList = (props) => {
             <div
               key={comment._id}
               className="d-flex justify-content-between mb-1 align-items-center"
+              data-testid="comment"
             >
               <ListGroup.Item>
                 {comment.comment} - {comment.rate}

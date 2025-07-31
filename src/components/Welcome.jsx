@@ -27,6 +27,7 @@ const Welcome = (props) => (
         <Dropdown.Item
           href="#/action-2"
           onClick={() => {
+            // console.log("Romance", Romance.length);
             props.changeGenre(Romance, "Romance");
           }}
         >
